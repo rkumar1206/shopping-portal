@@ -6,25 +6,34 @@ pipeline{
     tools{
        nodejs 'nodejs' 
     }
-   
     
-stages{
-        stage('compile'){
+
+    stages{
+        stage('compile-app'){
             steps{
                 echo 'this is the compile job'
                 sh 'npm install'
             }
         }
-        stage('test'){
+        stage('test-app'){
             steps{
                 echo 'this is the test job'
                 sh 'npm test'
             }
         }
-        stage('package'){
+        stage('package-app'){
             steps{
                 echo 'this is the package job'
                 sh 'npm run package'
             }
         }
     }
+    
+    post{
+        always{
+            echo 'Hey I know how to create pipeline as code :)'
+        }
+        
+    }
+    
+}
